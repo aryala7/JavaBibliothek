@@ -9,10 +9,10 @@ public class Library {
 
 
     public void addBook(Book book) {
-        if (books.isEmpty()) {
-            System.out.println("Keine Bücher vorhanden");
-        }
         books.add(book);
+    }
+    public List<Book> getBooksList() {
+        return books;
     }
 
     public void removeBook(String isbn) {
