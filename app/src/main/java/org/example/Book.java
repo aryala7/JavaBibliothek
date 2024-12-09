@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static org.example.ConsoleCommands.readUserInput;
 
-public class Book {
+public class Book extends Media {
     private String title;
     private String author;
     private String isbn;

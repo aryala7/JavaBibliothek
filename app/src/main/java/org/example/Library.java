@@ -3,39 +3,21 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library {
+public class Library<T extends Media & AddableItems> {
 
-    private List<Book> books = new ArrayList<>();
+    private final List<T> items = new ArrayList<>();
 
 
-    public void addBook(Book book) {
-        books.add(book);
+    public void addItem(T book) {
+        items.add(book);
     }
-    public List<Book> getBooksList() {
-        return books;
+    public List<T> getItemsList() {
+        return items;
     }
+    public void getItems() {
 
-    public void removeBook(String isbn) {
-
-        books.removeIf(book -> book.getIsbn().equals(isbn));
-    }
-
-    public void updateBook(String isbn, Book updatedBook) {
-        books.stream().findFirst().ifPresent(book -> {
-            if (book.getIsbn().equals(isbn)) {
-                book.setIsbn(updatedBook.getIsbn());
-                book.setAuthor(updatedBook.getAuthor());
-                book.setTitle(updatedBook.getTitle());
-                book.setStatus(updatedBook.getStatus());
-            }
-        });
-
-    }
-
-    public void getBooks() {
-
-        books.forEach((book) -> {
-            System.out.println("\n" + book.getTitle() + " " + book.getIsbn());
-        });
+        for (T item : items) {
+            System.out.println(item);
+        }
     }
 }

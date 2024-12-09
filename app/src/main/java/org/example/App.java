@@ -11,7 +11,7 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Library lib = new Library();
+        var lib = new Library<Media>();
         ConsoleCommands commands = new ConsoleCommands();
         System.out.println("Willkommen in meiner virtuellen Bibliothek");
         System.out.println("Tippen Sie 'help' ein, um die Liste der verfügbaren Befehle anzuschauen");
@@ -24,15 +24,11 @@ public class App {
                     break;
                 case "add":
                     Book newBook = readBookFromUser(sc);
-                    lib.addBook(newBook);
+                    lib.addItem(newBook);
                     System.out.println("Buch '" + newBook.getTitle() + "' wurde erfolgreich hinzugefügt!");
                     break;
                 case "list":
-                    lib.getBooks();
-                    break;
-                case "remove":
-                    String isbn = sc.nextLine().trim();
-                    lib.removeBook(isbn);
+                    lib.getItems();
                     break;
                 case "exit":
                     running = false;
