@@ -4,11 +4,22 @@
 package org.example;
 
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+
+
+    @Test
+    public void TestAddBook_ValidBook() {
+        Library library = new Library();
+        Book book = (new Book("The Starwars","John mc","1283","Active"));
+        library.addBook(book);
+        assertTrue(library.getBooksList().contains(book));
     }
 }
