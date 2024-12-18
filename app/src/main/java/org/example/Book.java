@@ -4,27 +4,30 @@ import java.util.Scanner;
 
 import static org.example.ConsoleCommands.readUserInput;
 
-public class Book extends Media {
+public class Book {
+
+    private int id;
     private String title;
     private String author;
-    private String isbn;
-    private String status;
+    private String genre;
+    private Boolean isBorrowed;
 
-    public Book(String title, String author, String isbn, String status) {
+    public Book(String title, String author, String genre, Boolean isBorrowed) {
         this.title = title;
         this.author = author;
-        this.isbn = isbn;
-        this.status = status;
+        this.genre = genre;
+        this.isBorrowed = isBorrowed;
+
     }
 
     public static Book readBookFromUser(Scanner scanner) {
 
         String title = readUserInput(scanner,"Title");
         String author = readUserInput(scanner,"Author");
-        String isbn = readUserInput(scanner, "ISBN");
-        String status = readUserInput(scanner, "Zustand");
+        String genre = readUserInput(scanner, "ISBN");
+//        Boolean isBorrowed = readUserInput(scanner, "");
 
-        return new Book(title, author, isbn, status);
+        return new Book(title, author, genre, true);
     }
 
 
@@ -43,21 +46,31 @@ public class Book extends Media {
         this.author = author;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public boolean isBorrowed() {
+        return isBorrowed;
     }
 
+    public void setIsBorrowed(Boolean isBorrowed) {
+        this.isBorrowed = isBorrowed;
+    }
 
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    static void printThing(AddableItems item) {
+        item.print();
+    }
 }

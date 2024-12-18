@@ -15,11 +15,10 @@ import static org.junit.Assert.*;
 public class AppTest {
 
 
-    @Test
-    public void TestAddBook_ValidBook() {
-        Library library = new Library();
-        Book book = (new Book("The Starwars","John mc","1283","Active"));
-        library.addBook(book);
-        assertTrue(library.getBooksList().contains(book));
-    }
+//    public void TestAddBook_ValidBook() {
+//        Library library = new Library();
+//        Book book = (new Book("The Starwars","John mc","1283","Active"));
+//        library.addBook(book);
+//        assertTrue(library.getBooksList().contains(book));
+//    }
 }

@@ -11,7 +11,7 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        var lib = new Library<Media>();
+        var lib = new Library();
         ConsoleCommands commands = new ConsoleCommands();
         System.out.println("Willkommen in meiner virtuellen Bibliothek");
         System.out.println("Tippen Sie 'help' ein, um die Liste der verfügbaren Befehle anzuschauen");
@@ -24,11 +24,13 @@ public class App {
                     break;
                 case "add":
                     Book newBook = readBookFromUser(sc);
-                    lib.addItem(newBook);
+                    lib.addBook(newBook);
                     System.out.println("Buch '" + newBook.getTitle() + "' wurde erfolgreich hinzugefügt!");
                     break;
-                case "list":
-                    lib.getItems();
+                case "search":
+                    System.out.println("do you want to search in authors or title?");
+                    String searchType = sc.nextLine().toLowerCase();
+                    searchByProperty(sc,lib,searchType);
                     break;
                 case "exit":
                     running = false;
@@ -40,6 +42,19 @@ public class App {
 
         sc.close();
 
+
+    }
+
+    private static void searchByProperty(Scanner sc,Library lib,String propertyType) {
+        System.out.println("Search for the " + propertyType );
+        String searchTerm = sc.nextLine().toLowerCase();
+        if (propertyType.equals("author")) {
+            Book book = lib.searchBookByAuthor(searchTerm);
+            System.out.println("Founded Book -> " + book.getTitle() );
+        } else if (propertyType.equals("title")) {
+            Book book = lib.searchBookByTitle(searchTerm);
+            System.out.println("Founded Book -> " + book.getTitle() );
+        }
 
     }
 }
